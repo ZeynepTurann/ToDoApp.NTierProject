@@ -1,0 +1,52 @@
+﻿@model UserEditDto
+@{
+     ViewData["Title"] = "Edit";
+}
+<div class="row">
+    <div class="col-sm-8">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title">Edit Profile</h5>
+            </div>
+            <form method="post" asp-action="Edit"  asp-controller="User">
+                <div class="text-danger" asp-validation-summary="All"></div>
+                <input type="hidden" asp-for="Image" />
+                <input type="hidden" asp-for="@Model.Id" />
+                <div class="card-body">
+                    <div class="form-group">
+                        <label asp-for="@Model.UserName">User Name:</label>
+                        <input asp-for="@Model.UserName" class="form-control" placeholder="User Name" />
+                        <span asp-validation-for="@Model.UserName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="@Model.Password">Password</label>
+                        <input asp-for="@Model.Password" class="form-control" placeholder="Password" />
+                        <span asp-validation-for="@Model.Password" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="@Model.Email">Email</label>
+                        <input asp-for="@Model.Email" class="form-control" placeholder="Email" />
+                        <span asp-validation-for="@Model.Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="@Model.PhoneNumber" class="control-label">Phone Number:</label>
+                        <input asp-for="@Model.PhoneNumber" class="form-control" placeholder="PhoneNumber" />
+                        <span asp-validation-for="@Model.PhoneNumber" class="text-danger"></span>
+                    </div>
+                     <div class="form-group">
+                        <label asp-for="@Model.Occupation class="control-label">Occupation:</label>
+                        <input asp-for="@Model.Occupation" class="form-control" placeholder="Occupation" />
+                        <span asp-validation-for="@Model.Occupation" class="text-danger"></span>
+                    </div>
+                 
+                </div>
+                <div class="card-footer">
+                    <div class="form-group">                       
+                        <input type="submit" value="Edit" class="btn btn-outline-success btn-sm float-right" />
+                        <a asp-action="Profile" class="btn btn-outline-info btn-sm float-left">Back To Your Profile</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

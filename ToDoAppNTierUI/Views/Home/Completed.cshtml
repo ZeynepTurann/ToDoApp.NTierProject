@@ -1,0 +1,50 @@
+﻿@model List<ToDoListDto>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@*<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>*@
+
+<div class="text-center my-3">
+    <h3>COMPLETED TITLES LIST</h3>
+</div>
+
+<table class="table table-hover table-bordered table-sm">
+    <thead class="thead-dark">
+        <tr>
+            <th>Title</th>
+            <th>Priority</th>
+            <th>IsCompleted</th>
+            <th>Created Date</th>
+            <th>Started Date</th>
+            <th>DeadLine </th>
+            <th>Finish Date </th>
+            <th>
+                Processes
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model)
+        {
+            <tr>
+                <td>@item.Definition</td>
+                <td>@item.Priority</td>
+                <td>Completed</td>
+                <td>@item.CreateDate</td>
+                 <td>@item.StartDate</td>
+                 <td>@item.Deadline</td>
+                <td>@item.FinishDate</td>
+                
+                <td>
+                    <a asp-action="Delete" asp-controller="Home" class="btn btn-danger btn-sm" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>

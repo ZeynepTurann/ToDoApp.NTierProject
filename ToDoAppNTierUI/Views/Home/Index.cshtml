@@ -1,0 +1,51 @@
+﻿@model List<ToDoListDto>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@*<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>*@
+
+<div class="text-right my-3">
+  <a asp-action="Create" asp-controller="Home" class="btn btn-primary"> Create A New Work</a>
+</div>
+
+<table class="table table-hover table-bordered table-sm">
+    <thead class="thead-dark">
+        <tr>
+            <th>Title</th>
+            <th>Priority</th>
+            <th>Is Started</th>
+            <th>Expected Started Date</th>
+            <th>Expected DeadLine</th>
+            <th>Is Completed</th>
+            <th>Finish Date</th>
+            <th>
+                Processes
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model)
+        {
+            <tr>
+                <td>@item.Definition</td>
+                <td>@item.Priority</td>
+                <td>@(item.IsStarted?"Started":"Not Started")</td>
+                <td>@item.StartDate</td>
+                <td>@item.Deadline</td>
+                <td>@(item.IsCompleted?"Completed":"Not Completed")</td>
+                <td>@item.FinishDate</td>
+                
+                <td>
+                    <a asp-action="Update" asp-controller="Home" class="btn btn-info btn-sm" asp-route-id="@item.Id">Edit</a>
+                    <a asp-action="Delete" asp-controller="Home" class="btn btn-danger btn-sm" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>

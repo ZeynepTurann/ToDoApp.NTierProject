@@ -1,0 +1,54 @@
+﻿@model UserRegisterDto
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+
+<div class="row">
+    <div class="col-sm-8">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title">Register</h5>
+            </div>
+
+            <form method="post" asp-action="Register" asp-controller="User" >
+                <div class="text-danger" asp-validation-summary="All"></div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label asp-for="UserName">User Name:</label>
+                        <input asp-for="UserName" class="form-control" placeholder="UserName" />
+                        <span asp-validation-for="UserName" class="text-danger">*</span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Password">Password:</label>
+                        <input asp-for="Password" class="form-control" type="password" placeholder="Password" />
+                        <span asp-validation-for="Password" class="text-danger">*</span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Email">Email:</label>
+                        <input asp-for="Email" class="form-control" type="email" placeholder="Email" />
+                        <span asp-validation-for="Email" class="text-danger">*</span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Occupation" class="control-label">Occupation:</label>
+                        <input asp-for="Occupation" class="form-control"  placeholder="Occupation" />
+                        <span asp-validation-for="Occupation" class="text-danger"></span>
+                    </div>
+                    </div>
+                 
+                <div class="card-footer">
+                    <div class="form-group">
+                        <input type="submit" value="Register" class="btn btn-outline-success btn-sm float-right" />
+                         <a class="btn btn-outline-info btn-sm float-left" asp-controller="User" asp-action="Login">Already Have An Account?</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+

@@ -1,0 +1,57 @@
+﻿@model ToDoUpdateDto
+<div class="mt-4">
+<form asp-action="Update" asp-controller="Home" method="post">
+	<input type="hidden" asp-for="@Model.Id"/>
+	<input type="hidden" asp-for="@Model.UserId"/>
+	<div class="row mt-4">
+		<div class="col-6">
+			<div class="mb-3">
+		<label><span  class="inline-block badge badge-secondary text-wrap" style="width: 9rem;"> Please Enter Your Title:</span></label>
+		<input asp-for="@Model.Definition" type="text" class="form-control"  />
+	</div>
+	<div class="mb-3">
+		<label><span class="inline-block badge badge-secondary text-wrap" style="width: 9rem;"> Please Enter Priority:</span></label>
+		<input asp-for="@Model.Priority" type="text" class="form-control" />
+	</div>
+		</div>
+		<div class="col">
+				<div class="form-check">
+  <input class="form-check-input" type="checkbox" asp-for="@Model.IsStarted" id="defaultCheck2">
+  <label class="form-check-label" for="IsStarted">
+    Is Started?
+  </label>
+</div>
+   <div class="mb-3">
+		<label><span class="inline-block badge badge-secondary text-wrap" style="width: 9rem;">Expected Start Time:</span></label>
+	<input asp-for="@Model.StartDate" class="datepicker" data-date-format="mm/dd/yyyy">
+	</div>
+  <div class="mb-3">
+		<label><span  class="inline-block badge badge-secondary text-wrap" style="width: 9rem;">Expected Deadline:</span></label>
+	<input asp-for="@Model.Deadline" class="datepicker" data-date-format="mm/dd/yyyy">
+	</div>
+		</div>
+		<div class="col">
+				<div class="form-check">
+  <input class="form-check-input" type="checkbox" asp-for="@Model.IsCompleted" id="defaultCheck2">
+  <label class="form-check-label" for="IsCompleted">
+    Is Completed?
+  </label>
+  </div>
+  <div class="mb-3">
+		<label><span class="inline-block badge badge-secondary text-wrap" style="width: 6rem;">Finish Date:</span></label>
+	<input asp-for="@Model.FinishDate" class="datepicker" data-date-format="mm/dd/yyyy">
+	</div>
+		</div>
+	</div>
+	
+
+<div class="mb-3">
+	<button type="submit" class="btn btn-secondary btn-block">Edit</button>
+</div>
+
+<div asp-validation-summary="All" class="text-danger">
+
+</div>
+</form>
+
+</div>

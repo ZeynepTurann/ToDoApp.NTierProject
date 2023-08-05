@@ -1,0 +1,37 @@
+﻿@model UserEditDto
+@{
+    ViewData["Title"] = "PhotoEdit";
+}
+<div class="row">
+    <div class="col-sm-8 mx-auto">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title">Edit Photo</h5>
+            </div>
+            <form asp-action="PhotoEdit" enctype="multipart/form-data">
+                <input type="hidden" asp-for="@Model.Image" />
+                <input type="hidden" asp-for="@Model.Id" />
+                <input type="hidden" asp-for="@Model.UserName" />
+                <input type="hidden" asp-for="@Model.Email" />
+                <input type="hidden" asp-for="@Model.Password" />
+                <input type="hidden" asp-for="@Model.PhoneNumber" />
+                <input type="hidden" asp-for="@Model.Occupation" />
+
+                <div class="card-body">
+                  
+                       <div class="form-group">
+                    <label asp-for="UploadImage" class="control-label">Choose The Picture</label>
+                    <input asp-for="UploadImage" class="form-control" />
+                    <span asp-validation-for="UploadImage" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="form-group">
+                        <input type="submit" value="Edit" class="btn btn-outline-success btn-sm float-right" />
+                        <a asp-action="Profile"  class="btn btn-outline-info btn-sm float-left">Back To Your Profile</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

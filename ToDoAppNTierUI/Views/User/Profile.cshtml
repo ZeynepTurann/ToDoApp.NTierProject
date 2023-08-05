@@ -1,0 +1,72 @@
+﻿@model UserListDto
+
+@{
+    ViewData["Title"] = "Profile";
+}
+@* <link href="~/css/user.css" rel="stylesheet" />*@
+@if (TempData["message"] != null)
+{
+    <div class="text-success">@TempData["message"]</div>
+}
+<div class="row">
+    <div class="col-sm-8">
+        <div class="card mx-auto" style="width:20rem;">
+         <div class="card-header mx-auto">
+             @if(Model.Image !=null)
+                {
+                    <img  src="/images/@Model.Image" class="card-img-top rounded-circle"/>
+                    <div class="card-img-overlay">
+                        <a asp-action="PhotoEdit" asp-route-id="@Model.Id" class="card-link"> Edit Photo</a>
+                    </div>
+                }
+                else
+                {
+                    <img class="card-img-top rounded-circle" alt="avatar1" src="https://mdbcdn.b-cdn.net/img/new/avatars/9.webp" />
+                    <div class="card-img-overlay">
+                        <a asp-action="PhotoEdit" asp-route-id="@Model.Id" class="card-link"> Add Photo</a>
+                    </div>
+                   
+                }
+         </div>
+  <div class="card-body">
+    <h5 class="card-title">Profile Card</h5>
+  
+  </div>
+  <ul class="list-group list-group-flush">
+                <li class="list-group-item"><span class="font-weight-bold"> Username:</span> @Model.UserName</li>
+                <li class="list-group-item"><span class="font-weight-bold"> Email:</span>: @Model.Email</li>
+    @if(Model.PhoneNumber != null)
+    {
+                    <li class="list-group-item"><span class="font-weight-bold"> Phone Number:</span> @Model.PhoneNumber</li>
+    }
+    else
+    {
+         <li class="list-group-item">You can specify a phone number by clicking the edit link below</li>
+    }
+    @if(Model.Occupation != null)
+    {
+                    <li class="list-group-item"><span class="font-weight-bold"> Occupation:</span> @Model.Occupation</li>
+    }
+    else
+    {
+      <li class="list-group-item">You can specify your occupation by clicking the edit link below</li>
+    }
+    
+    
+  </ul>
+  <div class="card-body">
+                <a asp-action="Edit" asp-controller="User" asp-route-id="@Model.Id" class="btn btn-outline-info btn-sm float-right"> Edit</a>
+                <a asp-action="Index" asp-controller="Home" class="btn btn-outline-info btn-sm float-left">Back to All Titles List </a>
+  </div>
+</div>
+    </div>
+  <div class="col-sm-4">
+        <div class="card" style="width: 18rem;">
+           <ul class="list-group list-group-flush">
+              <li class="list-group-item">Your All ToDos Count : <getAllTitlesCount user-id="@Model.Id"></getAllTitlesCount></li>
+              <li class="list-group-item">Your On Going ToDos Count: <getOnGoingCount user-id="@Model.Id"></getOnGoingCount></li>
+              <li class="list-group-item">Your Completed ToDos Count: <getCompletedCount user-id="@Model.Id"></getCompletedCount></li>
+          </ul>
+        </div>
+  </div>
+</div>
